@@ -656,10 +656,10 @@ public class Cls_l_fkddmx {
 		sqlInsert
 				.append("insert into KCS_FKDDMX(serial_no,org_code,opercode,oper_orgcode,oper_opercode,tb_date,name,fkbs,fk_no,fk_serial,fk_code,id,deli_fee,sum_price,tele_no,add_message,");
 		sqlInsert
-				.append("order_time,order_mark,proc_orgcode,d_message,org_tel,yj_fsh,chf_date,dshr,carnob,wf_code,jshzh,jshzh_no,post_addr,fk_price,wzxx,yw_type,order_type) values (");
+				.append("order_time,order_mark,proc_orgcode,d_message,org_tel,yj_fsh,chf_date,dshr,carnob,wf_code,jshzh,jshzh_no,post_addr,fk_price,wzxx,yw_type,order_type,wxcode) values (");
 		sqlInsert
 				.append("?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,SYSDATE,'0',?,?,?,?,?,?,");
-		sqlInsert.append("?,?,?,?,?,?,?,?,?)");
+		sqlInsert.append("?,?,?,?,?,?,?,?,?,?)");
 		log.error("----insertByObj2(obj)---ddid:"+id+"--jgh:"+obj.getOrg_code()+"--");
 		java.sql.Connection con = null;
 		java.sql.PreparedStatement stmt = null;
@@ -701,6 +701,7 @@ public class Cls_l_fkddmx {
 			stmt.setString(29, obj.getWzxx());
 			stmt.setString(30, obj.getYw_type());
 			stmt.setString(31, "0");
+			stmt.setString(32, obj.getWxcode());
 			//log.error(stmt.toString());
 			a = stmt.executeUpdate();
 			con.commit();

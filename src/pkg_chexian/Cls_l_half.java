@@ -23,9 +23,9 @@ public class Cls_l_half {
 		sqlInsert
 				.append("insert into KCS_FKDDMX(serial_no,org_code,opercode,oper_orgcode,oper_opercode,tb_date,name,fkbs,deli_fee,tele_no,");
 		sqlInsert
-				.append("order_time,order_mark,proc_orgcode,org_tel,yj_fsh,carnob,jshzh,jshzh_no,yw_type,order_type) values (");
+				.append("order_time,order_mark,proc_orgcode,org_tel,yj_fsh,carnob,jshzh,jshzh_no,yw_type,order_type,wxcode) values (");
 		sqlInsert
-				.append("?,?,?,?,?,?,?,?,?,?,SYSDATE,'0',?,?,?,?,?,?,?,?)");
+				.append("?,?,?,?,?,?,?,?,?,?,SYSDATE,'0',?,?,?,?,?,?,?,?,?)");
 		log.error("------insertByObj---ddid:"+id+"----jgh:"+obj.getOrg_code()+"------------");
 		//log.error(sqlInsert.toString());
 		java.sql.Connection con = null;
@@ -55,6 +55,7 @@ public class Cls_l_half {
 			stmt.setString(16, obj.getJshzh_no());
 			stmt.setString(17, obj.getYw_type());
 			stmt.setString(18, type);
+			stmt.setString(19, obj.getWxcode());
 			//log.error(stmt.toString());
 			a = stmt.executeUpdate();
 			con.commit();

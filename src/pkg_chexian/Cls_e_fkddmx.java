@@ -203,6 +203,13 @@ public class Cls_e_fkddmx {
 	public java.lang.String wzxx;
 	public java.lang.String zjlsh;
 	public java.lang.String yw_type;
+	public java.lang.String wxcode;
+	public java.lang.String getWxcode() {
+		return wxcode;
+	}
+	public void setWxcode(java.lang.String wxcode) {
+		this.wxcode = wxcode;
+	}
 	public java.lang.String getYw_type() {
 		return yw_type;
 	}
