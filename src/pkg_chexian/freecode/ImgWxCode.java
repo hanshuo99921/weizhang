@@ -22,6 +22,8 @@ import pkg_chexian.Cls_exception;
 
 /**
  * Servlet implementation class ImgWxCode
+ * 接收微信二维码图片，并识别二维码返回
+ * 临时图片文件路径.../wximg/机构号
  */
 public class ImgWxCode extends HttpServlet {
 	private static final long serialVersionUID = 1L;

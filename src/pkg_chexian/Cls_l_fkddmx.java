@@ -927,7 +927,69 @@ public class Cls_l_fkddmx {
 		}
 		return tag;
 	}
-
+	public boolean set_fk(int ddid) throws Exception {
+		StringBuffer sqlInsert = new StringBuffer();
+		sqlInsert
+				.append("update kcs_fkddmx set order_type='9',proce_time=sysdate  where serial_no=?");
+		boolean tag = false;
+		java.sql.Connection con = null;
+		java.sql.PreparedStatement stmt = null;
+		java.sql.ResultSet rs = null;
+		int a = 0;
+		try {
+			Cls_connect cn = new Cls_connect();
+			con = cn.connect().getConnection();
+			con.setAutoCommit(false);
+			stmt = con.prepareStatement(sqlInsert.toString());
+			stmt.setInt(1, ddid);
+			a = stmt.executeUpdate();
+			con.commit();
+			con.setAutoCommit(true);// 恢复默认
+			if (a > 0) {
+				tag = true;
+			}
+		} catch (SQLException se) {
+			se.printStackTrace();
+			try {
+				if (con != null) {
+					con.rollback();// 出现sql异常，事务回滚
+					con.setAutoCommit(true);// 设置提交方式为默认方式
+				}
+			} catch (SQLException se1) {
+				se1.printStackTrace();
+			}
+		} finally {
+			sqlInsert = null;
+			if (rs != null) {
+				try {
+					rs.close();
+				} catch (Exception e) {
+					throw new Cls_exception("Cls_l_fkddmx.set_fk()"
+							+ e.toString());
+				}
+				rs = null;
+			}
+			if (stmt != null) {
+				try {
+					stmt.close();
+				} catch (Exception e) {
+					throw new Cls_exception("Cls_l_fkddmx.set_fk()"
+							+ e.toString());
+				}
+				stmt = null;
+			}
+			if (con != null) {
+				try {
+					con.close();
+				} catch (Exception e) {
+					throw new Cls_exception("Cls_l_fkddmx.set_fk()"
+							+ e.toString());
+				}
+				con = null;
+			}
+		}
+		return tag;
+	}
 	public List<Cls_e_fkddmx> x_bypage(String tsql, int p, int ev)
 			throws Cls_exception {
 		StringBuffer sqlUpdate = new StringBuffer();

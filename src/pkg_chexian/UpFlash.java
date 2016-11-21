@@ -70,6 +70,10 @@ public class UpFlash extends HttpServlet {
 					filePath = request.getRealPath("/wzhimg/");
 			        filename = xh+"_"+id+"_"+lb+".jpg";
 			}
+			if ("wxfk".equals(mark)) {
+				    filePath = request.getRealPath("/wximg/");
+				    filename = ddid+"_"+id+"_"+lb+".jpg";
+			}
 			if ("half".equals(mark)) {
 				    filePath=request.getRealPath("/halfimg/"); 
 				if ("3".equals(lb)) {

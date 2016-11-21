@@ -8,18 +8,18 @@ package pkg_chexian;
  *
  */
 public class Wfjl {
-	public int id;
-	public java.lang.String name;
-	public java.lang.String cphm;
-	public java.lang.String wfxw;
-	public java.lang.String wfaddr;
-	public java.lang.String wfrq;
-	public java.lang.String wfcl;
-	public java.lang.String wfdm;
-	public java.lang.String fkje;
-	public java.lang.Integer fen;
-	public java.lang.String cfdh;
-	public java.lang.String skdh;
+	public int id=0;
+	public java.lang.String name="";
+	public java.lang.String cphm="";
+	public java.lang.String wfxw="";
+	public java.lang.String wfaddr="";
+	public java.lang.String wfrq="";
+	public java.lang.String wfcl="";
+	public java.lang.String wfdm="";
+	public java.lang.String fkje="";
+	public java.lang.Integer fen=0;
+	public java.lang.String cfdh="";
+	public java.lang.String skdh="";
 	public java.lang.String getCfdh() {
 		return cfdh;
 	}

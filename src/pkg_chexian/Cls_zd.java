@@ -67,9 +67,10 @@ public class Cls_zd {
 	     if (ord==3) a="改单";
 	     if (ord==4) a="冲正";
 	     if (ord==5) a="不完整";
-	     if (ord==6) a="已核销";	     
-	     if (ord==8) a="站点撤销";
+	     if (ord==6) a="已核销";	    
 	     if (ord==7) a="处理异常";
+	     if (ord==8) a="站点撤销";
+	     if (ord==9) a="已反馈";
 		return a;		
 	}
 	public int Getywtype(String ord) throws Cls_exception{
@@ -78,7 +79,7 @@ public class Cls_zd {
 	     if ("便民站代办车辆审验".equals(ord)) a=2;
 	     if ("便民站违章缴费".equals(ord)) a=3; //便民站[半]
 	     if ("便民站代办违章".equals(ord)) a=5; //[全]
-         if ("网点代办违章".equals(ord)) a=6;
+         if ("网点代办违章".equals(ord)) a=6; //网点免费 全
          if ("网点代办驾驶证".equals(ord)) a=7;
          if ("网点代办行驶证".equals(ord)) a=8;
          if ("网点代办车辆审验".equals(ord)) a=9;
@@ -602,4 +603,56 @@ public class Cls_zd {
 		}
 		return b;
 	}	
+	public Boolean isWd(String jgh) throws Cls_exception{
+	    int a = 0;
+		java.sql.Connection conn=null;
+		java.sql.PreparedStatement pstmt=null;
+		java.sql.ResultSet rs=null;
+		Boolean tag = false;
+	 try{	
+		 Cls_connect cn = new Cls_connect();
+		 conn = cn.connect().getConnection();
+		 pstmt=conn.prepareStatement("select count(*) from kcs_fkwdxx where orgcode = ?");
+		 pstmt.setString(1, jgh);
+
+		 rs=pstmt.executeQuery();
+
+		while(rs.next()) {
+			a=rs.getInt(1);
+			if (a == 1)
+				tag = true;
+					}
+		 }
+	  catch(Exception e){
+			throw new Cls_exception("Cls_zd.isWd() "+e.toString());
+	 }	
+	finally{
+		
+		if (rs!=null){
+			try{
+				rs.close();}
+			catch(Exception e){
+						 throw new Cls_exception("Cls_zd.isWd()"+e.toString());
+					}
+			     rs=null;  
+						}
+						if (pstmt!=null) {
+			try{
+							pstmt.close();}
+			catch(Exception e){
+						 throw new Cls_exception("Cls_zd.isWd()"+e.toString());
+					}
+			     pstmt=null;
+						}
+						if (conn!=null){
+			try{
+							conn.close();
+			}catch(Exception e){
+						 throw new Cls_exception("Cls_zd.isWd()"+e.toString());
+					}
+			   conn =null;
+						}
+		}
+	return tag;
+		}
 }

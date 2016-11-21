@@ -11,8 +11,8 @@ public class Cls_connect {
 			 //DataSource ds = (DataSource) ctx.lookup("ZbBmzh");// 83生产83
 			// DataSource ds = (DataSource)ctx.lookup("ZbpostJndi");//9生产80
 			//DataSource ds = (DataSource)ctx.lookup("Zb66jndi");//9测试66			 
-			 //DataSource ds = (DataSource)ctx.lookup("java:/ZbBmzh");//localhost jboss
-			 DataSource ds =(DataSource)ctx.lookup("java:/ZbBmzh83");//localhost jboss
+			DataSource ds = (DataSource)ctx.lookup("java:/ZbBmzh66");//localhost jboss
+			  //DataSource ds =(DataSource)ctx.lookup("java:/ZbBmzh83");//localhost jboss
 			// DataSource ds =(DataSource)ctx.lookup("java:/ZbBmzh80");//localhost jboss
  
 			return ds;

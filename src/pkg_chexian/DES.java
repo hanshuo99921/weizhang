@@ -114,7 +114,8 @@ public class DES
          {
              DES des = new DES();
              System.out.println("***** º”√‹≤‚ ‘ *****");
-             String dd = des.enTest("66009999");
+             String dd = des.enTest("62601016");
+             System.out.println(dd);
              System.out.println("***** Ω‚√‹≤‚ ‘ *****");
              des.deTest(dd);
          }

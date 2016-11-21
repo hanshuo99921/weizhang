@@ -224,6 +224,7 @@ public class Cls_l_wfjl {
 		java.sql.Connection conn=null;
 		java.sql.PreparedStatement pstmt=null;
 		java.sql.ResultSet rs=null;
+		String tmp = "";
 		 try{	
 				Cls_connect cn = new Cls_connect();
 				conn = cn.connect().getConnection();
@@ -240,8 +241,12 @@ public class Cls_l_wfjl {
                   tmp_jg.setFkje(rs.getString("fkje"));
                   tmp_jg.setFen(rs.getInt("fen"));
                   tmp_jg.setWfcl(rs.getString("wfcl"));
-                  tmp_jg.setCfdh(rs.getString("cfdh"));
-                  tmp_jg.setSkdh(rs.getString("skdh"));
+                  tmp = rs.getString("cfdh");
+                  if (tmp != null)
+                        tmp_jg.setCfdh(tmp);
+                  tmp = rs.getString("skdh");
+                  if (tmp != null)
+                	  tmp_jg.setSkdh(tmp);
 	              rtnAL.add(tmp_jg);
 	              tmp_jg=null;
 							}
@@ -394,7 +399,7 @@ public class Cls_l_wfjl {
 			con.setAutoCommit(false);
     	
             for (i=0;i<list.size();i++) {
-            	sql="update kcs_fkxxjl set cfdh="+list.get(i).getCfdh()+",skdh="+list.get(i).getSkdh()+" where dd_id="+ddid+" and  serial_no="+list.get(i).getId();
+            	sql="update kcs_fkxxjl set cfdh='"+list.get(i).getCfdh()+"',skdh='"+list.get(i).getSkdh()+"' where dd_id="+ddid+" and  serial_no="+list.get(i).getId();
             	stmt = con.prepareStatement(sql);
             	a = stmt.executeUpdate();
             	if (a>0) j=j+1;
